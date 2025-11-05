@@ -1,4 +1,6 @@
 jdk:
   - openjdk17
+
 before_install:
-  - echo "Preparing build..."
+  - sdk install java 17.0.12-oracle
+  - sdk use java 17.0.12-oracle
