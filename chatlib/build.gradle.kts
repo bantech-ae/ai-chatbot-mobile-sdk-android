@@ -63,7 +63,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.bantech-ae"
                 artifactId = "ai-chatbot-mobile-sdk-android"
-                version = "1.0.10" // ✅ الإصدار الجديد بعد التعديل
+                version = "1.0.11" // ✅ الإصدار الجديد بعد التعديل
             }
         }
     }
