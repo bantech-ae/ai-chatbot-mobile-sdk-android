@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("org.jetbrains.kotlin.plugin.compose") // ✅ ضروري مع Kotlin 2.0
     id("maven-publish")
 }
 
@@ -23,26 +24,27 @@ android {
         }
     }
 
-    // ✅ تفعيل دعم Jetpack Compose
+    // ✅ Jetpack Compose configuration
     buildFeatures {
         compose = true
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.14"
+        kotlinCompilerExtensionVersion = "1.5.15"
     }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
     kotlinOptions {
         jvmTarget = "11"
     }
 }
 
 dependencies {
-    // Jetpack Compose dependencies
+    // Compose BOM
     implementation(platform("androidx.compose:compose-bom:2024.06.00"))
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.material3:material3")
@@ -61,7 +63,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.bantech-ae"
                 artifactId = "ai-chatbot-mobile-sdk-android"
-                version = "1.0.6"
+                version = "1.0.7" // ✅ الإصدار الجديد بعد التعديل
             }
         }
     }
