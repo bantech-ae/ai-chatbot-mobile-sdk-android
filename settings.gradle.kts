@@ -13,5 +13,8 @@ dependencyResolutionManagement {
     }
 }
 
+
+
+
 rootProject.name = "ai-chatbot-mobile-sdk-android"
-include(":ai-chatbot-mobile-sdk-android")
+include(":app")
