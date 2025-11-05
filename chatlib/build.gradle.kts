@@ -23,6 +23,15 @@ android {
         }
     }
 
+    // ✅ تفعيل دعم Jetpack Compose
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.14"
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -32,6 +41,19 @@ android {
     }
 }
 
+dependencies {
+    // Jetpack Compose dependencies
+    implementation(platform("androidx.compose:compose-bom:2024.06.00"))
+    implementation("androidx.compose.ui:ui")
+    implementation("androidx.compose.material3:material3")
+    implementation("androidx.compose.ui:ui-tooling-preview")
+    debugImplementation("androidx.compose.ui:ui-tooling")
+
+    // Core + Lifecycle
+    implementation("androidx.core:core-ktx:1.13.1")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.4")
+}
+
 afterEvaluate {
     publishing {
         publications {
@@ -39,7 +61,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.bantech-ae"
                 artifactId = "ai-chatbot-mobile-sdk-android"
-                version = "1.0.5"
+                version = "1.0.6"
             }
         }
     }
