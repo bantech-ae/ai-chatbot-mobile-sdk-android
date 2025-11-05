@@ -1,18 +1,15 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
-    id("maven-publish") // For publishing
+    id("maven-publish")
 }
 
 android {
     namespace = "com.bantech.chat"
-    compileSdk = 36
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 24
-        targetSdk = 36
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
 
@@ -30,40 +27,18 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-
     kotlinOptions {
         jvmTarget = "11"
     }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.15"
-    }
-
-    buildFeatures {
-        compose = true
-    }
 }
 
-dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
-    implementation(libs.androidx.appcompat)
-}
-
-// ✅ Must be called after evaluation (so `release` component exists)
 afterEvaluate {
     publishing {
         publications {
             create<MavenPublication>("release") {
                 from(components["release"])
-                groupId = "com.bantech"
-                artifactId = "chatlib"
+                groupId = "com.github.bantech-ae"
+                artifactId = "ai-chatbot-mobile-sdk-android"
                 version = "1.0.3"
             }
         }
