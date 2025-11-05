@@ -3,21 +3,25 @@ package com.bantech.chat
 import android.content.Context
 
 object BantechChatLibrary {
-    fun createChatView(
-        context: Context,
-        config: BantechChatConfig
-    ): BantechChatView {
+
+    /**
+     * Create the chat view with a given configuration
+     */
+    fun createChatView(context: Context, config: BantechChatConfig): BantechChatView {
         return BantechChatView(context).apply {
             initialize(config)
         }
     }
 
+    /**
+     * Kotlin DSL style config builder
+     */
     fun config(
-        cid: String,
-        token: String,
+        customerId: String,
+        customerToken: String,
         init: BantechChatConfigBuilder.() -> Unit = {}
     ): BantechChatConfig {
-        return BantechChatConfigBuilder(cid, token)
+        return BantechChatConfigBuilder(customerId, customerToken)
             .apply(init)
             .build()
     }

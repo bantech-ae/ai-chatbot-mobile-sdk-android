@@ -17,21 +17,21 @@ class BantechChatConfigBuilder(
     private val customerId: String,
     private val customerToken: String
 ) {
-    private var wsAppKey: String? = null
-    private var wsHost: String = "ws.bantech.ae"
-    private var apiBaseUrl: String = "https://ai-chatbot.bantech.ae/api/"
+    private var _wsAppKey: String? = null
+    private var _wsHost: String = "ws.bantech.ae"
+    private var _apiBaseUrl: String = "https://ai-chatbot.bantech.ae/api/"
 
-    fun wsAppKey(appKey: String) = apply { this.wsAppKey = appKey }
-    fun wsHost(host: String) = apply { this.wsHost = host }
-    fun apiBaseUrl(baseUrl: String) = apply { this.apiBaseUrl = baseUrl }
+    fun wsAppKey(appKey: String) = apply { _wsAppKey = appKey }
+    fun wsHost(host: String) = apply { _wsHost = host }
+    fun apiBaseUrl(baseUrl: String) = apply { _apiBaseUrl = baseUrl }
 
     fun build(): BantechChatConfig {
         return BantechChatConfig(
             customerId = customerId,
             customerToken = customerToken,
-            wsAppKey = wsAppKey,
-            wsHost = wsHost,
-            apiBaseUrl = apiBaseUrl
+            wsAppKey = _wsAppKey,
+            wsHost = _wsHost,
+            apiBaseUrl = _apiBaseUrl
         )
     }
 }
